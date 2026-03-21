@@ -71,7 +71,7 @@ inventario-backend/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/inventario-backend.git
+git https://github.com/heiner-godoy/api-sistema-inventario-simple.git
 cd inventario-backend
 ```
 
