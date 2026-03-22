@@ -2,7 +2,9 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config, pool
 from alembic import context
 from config.connection import Base
-
+from models.model_categorias import Categoria
+from models.model_productos import Producto
+from models.model_movimientos import Movimiento
 
 config = context.config
 

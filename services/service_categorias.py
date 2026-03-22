@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from models.model_categorias import Categoria
 from schemas.schema_categorias import CategoriaCreate, CategoriaUpdate, CategoriaUpdate
+
 def get_categorias(db: Session):
     return db.query(Categoria).all()
 

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from models.model_movimientos import Movimiento
 from models.model_productos import Producto
-from schemas.schema_movimientos import MovimientoCreate, MovimientoUpdate
+from schemas.schema_movimientos import MovimientoCreate
 
 def get_movimientos(db: Session):
     return db.query(Movimiento).all()
@@ -37,18 +37,3 @@ def create_movimiento(db: Session, movimiento: MovimientoCreate):
     db.refresh(db_movimiento)
     return db_movimiento
 
-def update_movimiento(db: Session, movimiento_id: int, movimiento: MovimientoUpdate):
-    db_movimiento = db.query(Movimiento).filter(Movimiento.id == movimiento_id).first()
-    if db_movimiento is None:
-        return None
-    if movimiento.producto_id is not None:
-        db_movimiento.producto_id = movimiento.producto_id
-    if movimiento.cantidad is not None:
-        db_movimiento.cantidad = movimiento.cantidad
-    if movimiento.tipo is not None:
-        db_movimiento.tipo = movimiento.tipo
-    if movimiento.descripcion is not None:
-        db_movimiento.descripcion = movimiento.descripcion
-    db.commit()
-    db.refresh(db_movimiento)
-    return db_movimiento
