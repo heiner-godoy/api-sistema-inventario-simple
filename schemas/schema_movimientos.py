@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing import Optional
 
-class CrearMovimiento(BaseModel):
+class MovimientoCreate(BaseModel):
     producto_id: int = Field(..., description="ID del producto")
     cantidad: int = Field(..., gt=0, description="Cantidad del movimiento")
     tipo: str = Field(..., description="Tipo de movimiento (entrada o salida)")
@@ -17,3 +17,9 @@ class ResponseMovimiento(BaseModel):
     tipo: str = Field(..., description="Tipo de movimiento (entrada o salida)")
     descripcion: Optional[str] = Field(None, description="Descripción del movimiento")
     fecha: datetime = Field(..., description="Fecha y hora del movimiento")
+    
+class MovimientoUpdate(BaseModel):
+    producto_id: int = Field(None, description="ID del producto")
+    cantidad: int = Field(None, gt=0, description="Cantidad del movimiento")
+    tipo: str = Field(None, description="Tipo de movimiento (entrada o salida)")
+    descripcion: Optional[str] = Field(None, description="Descripción del movimiento")
